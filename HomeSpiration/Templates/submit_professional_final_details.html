@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Professional Profile</title>
+    <!-- Add your bootstrap, font, and other stylesheets links here -->
+    <!-- ... -->
+    <style>
+        /* Add your existing styles here */
+        /* ... */
+
+        .profile-header {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-image: url('{{ professional.cover_photo.url|default:"path/to/default-cover-photo.jpg" }}');
+        }
+
+        .profile-photo-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo-container img {
+            width: 100%;
+            height: auto;
+        }
+        .container {
+            background: #fff;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin-top: -50px; /* Half of the profile photo's height to pull the card up */
+            padding: 50px; /* Same as top padding of .profile-header to align the form properly */
+            /* Rest of your container styles ... */
+        }
+		form button {
+            width: calc(100% - 120px); /* Adjust width considering the profile picture */
+            margin-left: 120px; /* Adjust margin to align with the input fields */
+            /* Rest of your button styles ... */
+        }
+
+        /* Rest of your CSS ... */
+		.container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        form label {
+            color: #444;
+            font-weight: 500;
+        }
+
+        form input[type="text"],
+        form input[type="url"],
+        form textarea,
+        form select,
+        form input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            transition: all 0.3s ease-out;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="url"]:focus,
+        form textarea:focus,
+        form select:focus {
+            border: 1px solid #6bb7be;
+            box-shadow: 0 0 8px rgba(107, 183, 190, 0.5);
+            background-color: #ffffff;
+        }
+
+        form button {
+            width: 80%;
+            padding: 12px;
+            margin: 20px auto; /* Center the button with automatic margins */
+            display: block; /* Block display is necessary for auto margins to work */
+            background: linear-gradient(to right, #6bb7be 0%, #f89646 100%); /* Gradient background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            /* Override styles if necessary */
+            position: relative; /* Relative positioning */
+            left: 50%; /* Move to the right 50% of parent */
+            transform: translateX(-50%); /* Move back to the left 50% of its own width */
+        }
+
+        form button:hover {
+            transform: scale(1.05) translateX(-50%); /* Maintain the centering after scaling */
+            box-shadow: 0 5px 15px rgba(107, 183, 190, 0.4);
+        }
+
+        /* Rest of your custom styles */
+        /* ... */
+    </style>
+</head>
+<body class="sub_page">
+    <div class="profile-header">
+        <!-- Profile photo -->
+        <div class="profile-photo-container">
+            <img src="{{ professional.profile_photo.url|default:'path/to/default-profile-photo.png' }}" alt="Profile Picture">
+        </div>
+        <!-- Rest of the header content -->
+    </div>
+
+    <div class="container">
+        <h2><b>Edit Professional Profile</b></h2>
+        <form action="{% url 'submit_professional_final_details' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Include form fields and error handling here -->
+            <!-- ... -->
+            % if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    Please correct the errors below.
+                </div>
+            {% endif %}
+
+            <label for="companyTypeSelect">Company Type</label>
+            <select class="form-control" id="companyTypeSelect" name="company_type">
+                <option value="Local Builder" {% if professional.company_type == "Local Builder" %}selected{% endif %}>Local Builder</option>
+                <option value="Local Retailer" {% if professional.company_type == "Local Retailer" %}selected{% endif %}>Local Retailer</option>
+                <option value="International Builder" {% if professional.company_type == "International Builder" %}selected{% endif %}>International Builder</option>
+                <option value="International Retailer" {% if professional.company_type == "International Retailer" %}selected{% endif %}>International Retailer</option>
+            </select>
+
+            <label for="servicesOfferedSelect">Services Offered</label>
+            <select multiple class="form-control" id="servicesOfferedSelect" name="services_offered">
+                <option value="Masons" {% if "Masons" in professional_details.services_offered %}selected{% endif %}>Masons</option>
+                <option value="Electricals" {% if "Electricals" in professional_details.services_offered %}selected{% endif %}>Electricals</option>
+                <option value="Plumbing" {% if "Plumbing" in professional_details.services_offered %}selected{% endif %}>Plumbing</option>
+                <option value="Carpentry" {% if "Carpentry" in professional_details.services_offered %}selected{% endif %}>Carpentry</option>
+            </select>
+
+            <label for="websiteLinkInput">Website Link</label>
+            <input type="url" class="form-control" id="websiteLinkInput" name="website_link" value="{{ professional_details.website_link }}">
+
+            <label for="professionalInfoTextarea">Professional Information</label>
+            <textarea class="form-control" id="professionalInfoTextarea" name="professional_info" rows="3">{{ professional_details.professional_information }}</textarea>
+
+            <label for="businessDescriptionTextarea">Business Description</label>
+            <textarea class="form-control" id="businessDescriptionTextarea" name="business_description" rows="3">{{ professional_details.business_description }}</textarea>
+
+            <label for="certificationsInput">Certifications and Awards</label>
+            <input type="text" class="form-control" id="certificationsInput" name="certifications" value="{{ professional_details.certifications_and_awards }}">
+
+
+            <!-- Other form fields -->
+            <!-- ... -->
+
+            <label for="profile_picture">Profile Picture</label>
+            <input type="file" class="form-control-file" id="profile_picture" name="profile_picture">
+            {% if professional.profile_photo %}
+                <img src="{{ professional.profile_photo.url }}" alt="Profile Picture" width="100">
+            {% endif %}
+
+            <label for="cover_photo">Cover Photo</label>
+            <input type="file" class="form-control-file" id="cover_photo" name="cover_photo">
+            {% if professional.cover_photo %}
+                <img src="{{ professional.cover_photo.url }}" alt="Cover Photo" width="100">
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Add your scripts here -->
+    <!-- ... -->
+</body>
+</html>

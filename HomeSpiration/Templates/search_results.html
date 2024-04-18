@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Layouts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>HomeSpiration</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+
+    <style>
+        body {
+            padding-top: 100px;
+            
+            
+        }
+        .search-form {
+            margin-bottom: 30px;
+            
+        }
+        #results .layout-container {
+            background: white;
+            border-radius: .25rem;
+            padding: 15px;
+            box-shadow: 0 4px 6px #6bb7be;
+        }
+        .modal-dialog img {
+            max-width: 100%;
+            border-radius: .25rem;
+        }
+        .no-results {
+            text-align: center;
+            padding: 20px;
+        }
+        
+
+    .layout-container {
+        border: 3px solid #6bb7be;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px #6bb7be;
+        padding-right: 10px;
+    }
+
+    .layout-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px #6bb7be;
+       
+    }
+    .btn btn-primary{
+        background-color: #6bb7be;
+    }
+    .form-control{
+        box-shadow: 0 4px 6px #6bb7be;
+    }
+    
+.navbar-brand {
+    color: #6bb7be !important; 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.navbar-brand:hover, .navbar-brand:focus {
+    transform: scale(1.1); 
+    cursor: pointer;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.75); 
+    transition: color 0.3s ease-in-out; 
+}
+
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: rgba(255,255,255,1);
+}
+
+.navbar-dark {
+    background-color: #6bb7be !important; 
+}
+
+.navbar-brand {
+    color: #ffffff !important; 
+}
+.header_section {
+    position: fixed; /* Fixed position */
+    top: 0; /* Align to the top */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+</style>
+</head>
+<body>
+
+    <header class="header_section long_section px-0">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              HomeSpiration
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_projects' %}" style="text-transform: none";>view Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Design' %}" style="text-transform: none";>Dreamsculpt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'chatbot' %}" style="text-transform: none";>HomeGenie</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search_layouts' %}" style="text-transform: none";>Search</a>
+                  </li>
+                  
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}" style="text-transform: none";>Logout</a>
+                </li><ul></ul><ul></ul>
+
+                <div class="quote_btn-container">
+                    <!-- <img src="{% if user.professional.profile_photo %}{{ user.professional.profile_photo.url }}{% else %}{% static 'images/user1.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 40px; height: 40px;"> -->
+                    <h5>Welcome,{{ user.username }}</h5>
+                    <form class="form-inline">
+                      <!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i> -->
+                      </button>
+              </ul>
+              
+            </div>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="container">
+        <!-- Search Form -->
+        <form action="{% url 'search_layouts' %}" method="get" class="search-form">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="sqr_ft_range"><b>Square Feet Range:</b></label>
+                    <select id="sqr_ft_range" name="sqr_ft_range" class="form-control">
+                        <option value="500to1000">500-1000 sq ft</option>
+                        <option value="1000to1500">1000-1500 sq ft</option>
+                        <option value="1500to2000">1500-2000 sq ft</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="num_rooms"><b>Number of Rooms:</b></label>
+                    <input type="number" id="num_rooms" name="num_rooms" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="num_halls"><b>Number of Halls:</b></label>
+                    <input type="number" id="num_halls" name="num_halls" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="num_kitchens"><b>Number of Kitchens:</b></label>
+                    <input type="number" id="num_kitchens" name="num_kitchens" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="num_bathrooms"><b>Number of Bathrooms:</b></label>
+                    <input type="number" id="num_bathrooms" name="num_bathrooms" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="num_storeys"><b>Number of Storeys:</b></label>
+                    <input type="number" id="num_storeys" name="num_storeys" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <!-- Search Results -->
+        {% if layouts %}
+            <div id="results" class="row">
+                {% for layout in layouts %}
+                    <div class="col-md-4 layout-container">
+                        <img src="{{ layout.layout_image.url }}" alt="Layout Image" class="img-fluid" data-toggle="modal" data-target="#layoutModal{{ forloop.counter }}">
+                        <img src="{{ layout.design_image.url }}" alt="Design Image" class="img-fluid" data-toggle="modal" data-target="#designModal{{ forloop.counter }}">
+                        <p class="mt-2"><strong>Square Feet:</strong> {{ layout.sqr_ft }}</p>
+                        <p><strong>Rooms:</strong> {{ layout.num_rooms }}</p>
+                        <p><strong>Halls:</strong> {{ layout.num_halls }}</p>
+                        <p><strong>Kitchens:</strong> {{ layout.num_kitchens }}</p>
+                        <p><strong>Bathrooms:</strong> {{ layout.num_bathrooms }}</p>
+                        <p><strong>Cost:</strong> {{ layout.cost }}</p>
+                        <p><strong>Description:</strong> {{ layout.description }}</p>
+                    </div>
+                    <!-- Modals for images -->
+                    <div class="modal fade" id="layoutModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="layoutModalLabel" aria-hidden="true">
+                        <!-- Modal Content -->
+                    </div>
+                    <div class="modal fade" id="designModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="designModalLabel" aria-hidden="true">
+                        <!-- Modal Content -->
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!--<p class="no-results">No results found.</p>-->
+        {% endif %}
+    </div>
+
+    <script>
+        // Add your JavaScript here if needed
+    </script>
+
+</body>
+</html>

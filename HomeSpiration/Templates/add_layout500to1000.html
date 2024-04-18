@@ -1,0 +1,584 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Layout (500-1000 sq ft)</title>
+    <!-- Bootstrap CSS CDN for styling and responsiveness -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS for additional styling -->
+    <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>HomeSpiration</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+    <style>
+        body { 
+            padding-top: 5rem; 
+            background-color: #f8f9fa; 
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        .btn-custom { 
+            background-color: #6bb7be; 
+            color: white; 
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+        }
+        .btn-custom:hover { 
+            background-color: #066f7d; 
+        }
+        .header-custom {
+            background-color: #6bb7be;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.25rem 0.25rem 0 0;
+            margin: -2rem -2rem 2rem -2rem;
+            align-items: center;
+        }
+        .form-custom {
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px #6bb7be;
+        }
+        .form-heading {
+            margin-bottom: 2rem;
+        }
+        .header {
+            background-color: #f0f5f9; /* Use your preferred header background color */
+            padding: 5px 10px;
+            box-shadow: 0 2px 4px #6bb7be;
+            display: flex;
+            justify-content: space-between; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            width: 100%; /* Header width spans the whole page */
+            position: fixed; /* Fixed position for the header */
+            z-index: 1; /* Ensure the header appears above the sidebar */
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f5f9; /* Use your preferred background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #f0f5f9; /* Use your preferred header background color */
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px #6bb7be;
+            display: flex;
+            justify-content: space-between; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            width: 100%; /* Header width spans the whole page */
+            position: fixed; /* Fixed position for the header */
+            z-index: 1; /* Ensure the header appears above the sidebar */
+        }
+
+        /* Page title styles */
+        .page-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color:#6bb7be;
+        }
+
+        /* Logout button styles */
+        #logout-link {
+            background-color: #6bb7be; /* Use your preferred button background color */
+            color: #fff; /* Use your preferred button text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        #logout-link:hover {
+            background-color: #6bb7be; /* Use your preferred button hover background color */
+        }
+       
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #6bb7be; /* Use your preferred background color */
+            color: #fff; /* Use your preferred text color */
+            padding-top: 20px;
+            margin-top: 60px; /* Adjust margin to start after the header */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+        }
+
+        .sidebar a {
+            color: #fff; /* Use your preferred text color */
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #83c7c7; /* Use your preferred hover background color */
+        }
+
+        /* Main content styles */
+        .content {
+            margin-left: 250px;
+            transition: margin-left .3s;
+            padding: 50px;
+        }
+
+        .container {
+            margin-top: 100px;
+            margin-left: 340px;
+        }
+        .card-title{
+
+            color:#6bb7be;
+        }
+        .card-body{
+            box-shadow: 0 2px 4px #6bb7be;
+        }
+        th{
+            color:rgb(96, 172, 179)
+        }
+        .vertical-navbar {
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #6bb7be;
+            overflow-x: hidden;
+            padding-top: 60px;
+            height: 100%;
+            width: 200px;
+        }
+        .vertical-navbar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .vertical-navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .vertical-navbar a.active {
+            background-color: #4C9EA6;
+            color: white;
+        }
+
+        #description {
+            resize: none;
+        }
+
+        /* Style for error messages */
+        .error {
+            color: red;
+            font-size: 0.8em;
+            display: none; /* Hide by default */
+        }
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #6bb7be; /* Use your preferred background color */
+            color: #fff; /* Use your preferred text color */
+            padding-top: 20px;
+            margin-top: 60px; /* Adjust margin to start after the header */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+        }
+
+        .sidebar a {
+            color: #fff; /* Use your preferred text color */
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #83c7c7; /* Use your preferred hover background color */
+        }
+        .dropdown-item{
+            color: white;
+        }
+        /* Custom CSS for the black dropdown menu */
+        .dropdown-menu-black {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+        }
+
+        .dropdown-menu-black .dropdown-item {
+            color: #fff; /* White text for dropdown items */
+        }
+
+        .dropdown-menu-black .dropdown-item:hover, .dropdown-menu-black .dropdown-item:focus {
+            background-color: #333; /* Darker background for hover/focus */
+            color: #fff; /* White text for hover/focus */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              HomeSpiration
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <!-- <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}"> About</a>
+                </li> -->
+                  
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'add_project' %}"  style="text-transform: none";> Add Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_projects' %}"  style="text-transform: none";>view Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'edit_professional_details' %}"  style="text-transform: none";>Edit</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Design' %}"  style="text-transform: none";>Dreamsculpt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'chatbot' %}" style="text-transform: none";>HomeGenie</a>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: none";>
+                        Add Layout
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-black" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'add_layout500to1000' %}" style="text-transform: none";>500 to 1000</a>
+                        <a class="dropdown-item" href="{% url 'add_layout1000to1500' %}" style="text-transform: none";>1000 to 1500</a>
+                        <a class="dropdown-item" href="{% url 'add_layout1500to2000' %}" style="text-transform: none";>1500 to 2000</a>
+                    </div>
+                </li>
+                  
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}" style="text-transform: none";>Logout</a>
+                </li>
+              </ul>
+            </div>
+            <div class="quote_btn-container">
+              <!-- <img src="{% if user.professional.profile_photo %}{{ user.professional.profile_photo.url }}{% else %}{% static 'images/user1.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 40px; height: 40px;"> -->
+              <h5>Welcome,{{ user.username }}</h5>
+              <form class="form-inline">
+                <!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i> -->
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+      </header>
+      <!-- end header section -->
+<!-- Rest of your sidebar code -->
+
+    <div class="container">
+        <div class="header-custom">
+            <h2 class="form-heading"><center>Add New Layout (500-1000 sq ft)</center></h2>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <!-- CSRF Token Placeholder -->
+            <!-- Replace with server-side template tag for CSRF token -->
+            {% csrf_token %}
+            <!--<div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control form-custom" id="description" name="description" rows="4"></textarea>
+            </div>-->
+
+            <div class="form-group">
+                <label for="sqr_ft">Square Feet:</label>
+                <input type="number" class="form-control form-custom" id="sqr_ft" name="sqr_ft" min="500" max="1000">
+            </div>
+
+            <div class="form-group">
+                <label for="num_rooms">Number of Rooms:</label>
+                <input type="number" class="form-control form-custom" id="num_rooms" name="num_rooms">
+            </div>
+
+            <div class="form-group">
+                <label for="num_halls">Number of Halls:</label>
+                <input type="number" class="form-control form-custom" id="num_halls" name="num_halls">
+            </div>
+
+            <div class="form-group">
+                <label for="num_kitchens">Number of Kitchens:</label>
+                <input type="number" class="form-control form-custom" id="num_kitchens" name="num_kitchens">
+            </div>
+
+            <div class="form-group">
+                <label for="num_bathrooms">Number of Bathrooms:</label>
+                <input type="number" class="form-control form-custom" id="num_bathrooms" name="num_bathrooms">
+            </div>
+
+            <div class="form-group">
+                <label for="num_storeys">Number of Storeys:</label>
+                <input type="number" class="form-control form-custom" id="num_storeys" name="num_storeys">
+            </div>
+
+            <div class="form-group">
+                <label for="cost">Cost:</label>
+                <input type="text" class="form-control form-custom" id="cost" name="cost">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control form-custom" id="description" name="description" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="layout_image">Layout Image:</label>
+                <input type="file" class="form-control-file" id="layout_image" name="layout_image" accept="image/*">
+            </div>
+            
+            <div class="form-group">
+                <label for="design_image">Design Image:</label>
+                <input type="file" class="form-control-file" id="design_image" name="design_image" accept="image/*">
+            </div>
+            
+
+            <button type="submit" class="btn btn-custom btn-block">Submit</button>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for form validation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.querySelector('form');
+            function showError(input, message) {
+                    var errorSpanId = 'error-' + input.id;
+                    var errorSpan = document.getElementById(errorSpanId);
+                    errorSpan.textContent = message;
+                    errorSpan.style.display = 'block'; // Show error message
+                }
+
+                function clearError(input) {
+                    var errorSpanId = 'error-' + input.id;
+                    var errorSpan = document.getElementById(errorSpanId);
+                    errorSpan.style.display = 'none'; // Hide error message
+                }
+
+                function validateInput(input, test, message) {
+                    if (!test(input.value)) {
+                        showError(input, message);
+                        return false;
+                    }
+                    clearError(input);
+                    return true;
+                }
+
+                form.onsubmit = function(e) {
+                    var isValid = true;
+                    var description = document.getElementById('description');
+                    var sqrFt = document.getElementById('sqr_ft');
+                    var numRooms = document.getElementById('num_rooms');
+                    // Add more inputs as needed
+
+                    // Description should not be empty
+                    if (!validateInput(description, function(value) { return value.trim() !== ''; }, "Description is required.")) {
+                        isValid = false;
+                    }
+
+                    // Number fields should not be zero
+                    if (!validateInput(sqrFt, function(value) { return value > 0; }, "Square feet must be greater than or equal to 500.")) {
+                        isValid = false;
+                    }
+
+                    // Repeat validation checks for other inputs...
+
+                    // Prevent form submission if any validation fails
+                    if (!isValid) {
+                        e.preventDefault();
+                    }
+                };
+            });
+
+            
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('form');
+
+    function showError(input, message) {
+        var errorSpanId = 'error-' + input.id;
+        var errorSpan = document.getElementById(errorSpanId);
+        if (!errorSpan) {
+            errorSpan = document.createElement('div');
+            errorSpan.id = errorSpanId;
+            errorSpan.className = 'error';
+            input.parentNode.appendChild(errorSpan);
+        }
+        errorSpan.textContent = message;
+        errorSpan.style.display = 'block';
+        errorSpan.style.color = 'red'; // Set the color of error message
+    }
+
+    function clearError(input) {
+        var errorSpanId = 'error-' + input.id;
+        var errorSpan = document.getElementById(errorSpanId);
+        if (errorSpan) {
+            errorSpan.style.display = 'none';
+        }
+    }
+
+    function validateInput(input, test, message) {
+        if (!test(input.value)) {
+            showError(input, message);
+            return false;
+        }
+        clearError(input);
+        return true;
+    }
+
+    function validateNonZeroPositive(input) {
+        return validateInput(input, function (value) {
+            return value > 0;
+        }, 'This field cannot be zero or negative.');
+    }
+
+    // Image validation function
+    function validateImage(input) {
+        if (input.files.length === 0) {
+            showError(input, 'Please select an image.');
+            return false;
+        }
+        clearError(input);
+        return true;
+    }
+
+    // Add blur event listeners for real-time validation
+    ['sqr_ft', 'num_rooms', 'num_halls', 'num_kitchens', 'num_bathrooms', 'num_storeys', 'cost', 'description', 'layout_image', 'design_image'].forEach(function (id) {
+        var input = document.getElementById(id);
+        input.addEventListener('blur', function () {
+            switch (input.id) {
+                case 'sqr_ft':
+                    validateInput(input, function (value) { return value >= 500 && value <= 1000; }, 'Square feet must be between 500 and 1000.');
+                    break;
+                case 'num_rooms':
+                case 'num_halls':
+                case 'num_kitchens':
+                case 'num_bathrooms':
+                case 'num_storeys':
+                    validateNonZeroPositive(input);
+                    break;
+                case 'cost':
+                    validateNonZeroPositive(input);
+                    break;
+                case 'description':
+                    validateInput(input, function (value) { return value.trim() !== ''; }, 'Description is required.');
+                    break;
+                case 'layout_image':
+                case 'design_image':
+                    validateImage(input);
+                    break;
+            }
+        });
+    });
+
+    form.addEventListener('submit', function (e) {
+        var isValid = true;
+
+        // Run validation checks
+        isValid &= validateInput(document.getElementById('sqr_ft'), function (value) { return value >= 500 && value <= 1000; }, 'Square feet must be between 500 and 1000.');
+        ['num_rooms', 'num_halls', 'num_kitchens', 'num_bathrooms', 'num_storeys'].forEach(function (id) {
+            isValid &= validateNonZeroPositive(document.getElementById(id));
+        });
+        isValid &= validateNonZeroPositive(document.getElementById('cost'));
+        isValid &= validateInput(document.getElementById('description'), function (value) { return value.trim() !== ''; }, 'Description is required.');
+        isValid &= validateImage(document.getElementById('layout_image'));
+        isValid &= validateImage(document.getElementById('design_image'));
+
+        if (!isValid) {
+            e.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+});
+</script>
+    </script>
+    <script>
+        const yearSpan = document.getElementById('displayYear');
+        yearSpan.textContent = new Date().getFullYear();
+      </script>
+      
+      
+</body>
+        
+</html>

@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>HomeSpiration</title>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  
+  <!-- font awesome style -->
+  <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+<style>
+  .project-card {
+    border: 1px solid #e1e1e8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+    border-color: #004494;
+}
+.download-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    z-index: 2;
+}
+.download-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    z-index: 1;
+}
+.project-card {
+      position: relative; /* Ensure the project card is a positioned container */
+    }
+
+    .download-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #ffffff;
+      z-index: 1;
+      font-size: 24px; /* Adjust the font size as needed */
+    }
+
+</style>
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            HomeSpiration
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'user_project_view' %}"  style="text-transform: none";>view Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'user_design' %}"  style="text-transform: none";>Dreamsculpt</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'user_chatbot' %}" style="text-transform: none";>HomeGenie</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'ideabook' %}" style="text-transform: none";>Ideabook</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" style="text-transform: none";>Logout</a>
+              </li>
+            </ul>
+          </div><ul></ul><ul></ul>
+          <div class="quote_btn-container">
+            <!-- <img src="{% if user.professional.profile_photo %}{{ user.professional.profile_photo.url }}{% else %}{% static 'images/user1.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 40px; height: 40px;"> -->
+            <h5>Welcome,{{ user.username }}</h5>
+            <form class="form-inline">
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+  </div>
+  <div class="container mt-4">
+    <div class="row">
+      {% for project in projects %}
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            {% if project.image_of_building %}
+              <img src="{{ project.image_of_building.url }}" class="card-img-top" alt="Building Image">
+              <a href="{{ project.image_of_building.url }}" download="{{ project.project_name }}.jpg" class="download-icon"><i class="fa fa-download" aria-hidden="true"></i></a>
+
+            </a>
+            
+              </a>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ project.project_name }}</h5>
+              <p class="card-text">Company: {{ project.professional.company_name }}</p>
+              <p class="card-text">Square Feet: {{ project.square_feet }}</p>
+              <p class="card-text">Status: {{ project.status }}</p>
+              <p class="card-text">Contact Number: {{ project.contact_number }}</p>
+              
+              <!-- Save button -->
+              <button type="button" class="btn btn-primary btn-save" data-project-id="{{ project.project_id }}">Save</button>
+              <!-- Share button -->
+              <button type="button" class="btn btn-primary btn-share" data-toggle="modal" data-target="#emailShareModal" data-image-url="{{ project.image_of_building.url }}">Share</button>
+              <!-- View Details button -->
+              <a href="{% url 'project_detail' project_id=project.project_id %}" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+                  
+  </div>
+
+  
+      
+<!-- Email Share Modal -->
+<div class="modal fade" id="emailShareModal" tabindex="-1" role="dialog" aria-labelledby="emailShareModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailShareModalLabel">Send a Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="emailShareForm">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="email" class="form-control" id="recipientEmail" placeholder="To (enter recipient emails, separated by commas):" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="emailSubject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="emailMessage" placeholder="Message" required>Take a look at this great space that I found on HomeSpiration, and let me know what you think.</textarea>
+          </div>
+          <!-- Hidden input field for image URL -->
+          <input type="hidden" id="image_url" name="image_url" value="">
+          <!-- Email message with image tag -->
+          <p></p>
+          <img id="sharedImage" src="" alt="Building Image">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  $(document).ready(function() {
+
+      $('.btn-share').on('click', function() {
+    var imageUrl = $(this).data('image-url');
+    $('#sharedImage').attr('src', imageUrl); // Set the src attribute of the image
+    $('#image_url').val(imageUrl); // Set the value of the hidden input field
+});
+
+
+  });
+</script>
+<script>
+
+$(document).ready(function() {
+    $('.btn-share').on('click', function() {
+        var imageUrl = $(this).data('image-url');
+        // Check if the image URL is missing the protocol
+        if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+            // Add the protocol to the URL
+            imageUrl = 'https://' + imageUrl; // Assuming HTTPS, change if needed
+        }
+        // Replace any double slashes in the URL
+        imageUrl = imageUrl.replace(/([^:]\/)\/+/g, "$1");
+        // Set the image URL in the hidden input field and as the source of the image tag
+        $('#image_url').val(imageUrl);
+        $('#sharedImage').attr('src', imageUrl);
+    });
+  $(document).ready(function() {
+    $('.btn-share').on('click', function() {
+        var imageUrl = $(this).data('image-url');
+        // Check if the image URL is missing the protocol
+        if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+            // Add the protocol to the URL
+            imageUrl = 'https://' + imageUrl; // Assuming HTTPS, change if needed
+        }
+        // Replace any double slashes in the URL
+        imageUrl = imageUrl.replace(/([^:]\/)\/+/g, "$1");
+        // Set the image URL in the hidden input field and as the source of the image tag
+        $('#image_url').val(imageUrl);
+        $('#sharedImage').attr('src', imageUrl);
+    });
+
+    $('#emailShareForm').submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var imageUrl = $('#image_url').val(); // Retrieve the image URL from the hidden input field
+        // Ensure the image URL is valid
+        if (imageUrl) {
+            $.ajax({
+                type: 'POST',
+                url: '/send_email/',
+                data: {
+                    'recipient': $('#recipientEmail').val(),
+                    'subject': $('#emailSubject').val(),
+                    'message': $('#emailMessage').val(),
+                    'image_url': imageUrl,
+                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(response) {
+                    $('#emailShareModal').modal('hide');
+                    alert('Email sent successfully');
+                },
+                error: function(error) {
+                    alert('Error sending email: ' + error.responseText);
+                }
+            });
+        } else {
+            alert('Image URL is not valid');
+        }
+    });
+  });
+});
+
+$.ajax({
+    type: 'POST',
+    url: '/save_to_ideabook/', // Ensure this URL is correct
+    data: {
+        'project_id': projectId,
+        'image_url': imageUrl,
+        'project_name': projectName,
+        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+    },
+    success: function(response) {
+        alert('Project saved to ideabook successfully');
+    },
+    error: function(error) {
+        alert('Error saving project to ideabook: ' + error.responseText);
+    }
+});
+</script>
+
+<script>
+  $(document).ready(function() {
+    // Event listener for the save button
+    $('.btn-save').on('click', function() {
+        // Extract project information
+        var projectId = $(this).data('project-id');
+        var imageUrl = $(this).closest('.project-card').find('.card-img-top').attr('src');
+        var projectName = $(this).closest('.project-card').find('.card-title').text();
+        // You can extract more information if needed
+        
+        // Send data to the server
+        $.ajax({
+            type: 'POST',
+            url: '/save_to_ideabook/',
+            data: {
+                'project_id': projectId,
+                'image_url': imageUrl,
+                'project_name': projectName,
+                // Add more data if needed
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                alert('Project saved to ideabook successfully');
+            },
+            error: function(error) {
+                alert('Error saving project to ideabook: ' + error.responseText);
+            }
+        });
+    });
+
+    // Event listener for the share button
+    $('.btn-share').on('click', function() {
+        var imageUrl = $(this).data('image-url');
+        $('#sharedImage').attr('src', imageUrl); // Set the src attribute of the image
+        $('#image_url').val(imageUrl); // Set the value of the hidden input field
+    });
+
+    $('#emailShareForm').submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var imageUrl = $('#image_url').val(); // Retrieve the image URL from the hidden input field
+        // Ensure the image URL is valid
+        if (imageUrl) {
+            $.ajax({
+                type: 'POST',
+                url: '/send_email/',
+                data: {
+                    'recipient': $('#recipientEmail').val(),
+                    'subject': $('#emailSubject').val(),
+                    'message': $('#emailMessage').val(),
+                    'image_url': imageUrl,
+                    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(response) {
+                    $('#emailShareModal').modal('hide');
+                    alert('Email sent successfully');
+                },
+                error: function(error) {
+                    alert('Error sending email: ' + error.responseText);
+                }
+            });
+        } else {
+            alert('Image URL is not valid');
+        }
+    });
+});
+$.ajax({
+    type: 'POST',
+    url: '/save_to_ideabook/', // Ensure this URL is correct
+    data: {
+        'project_id': projectId,
+        'image_url': imageUrl,
+        'project_name': projectName,
+        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+    },
+    success: function(response) {
+        alert('Project saved to ideabook successfully');
+    },
+    error: function(error) {
+        alert('Error saving project to ideabook: ' + error.responseText);
+    }
+});
+
+</script>
+
+</body>
+</html>

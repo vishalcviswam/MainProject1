@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+
+<!-- Basic -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- Site Metas -->
+<link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>HomeSpiration</title>
+
+
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+
+<!-- fonts style -->
+<link href="{% static '/https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap' %}" rel="stylesheet" />
+
+<!-- font awesome style -->
+<link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="{% static '/css/style.css' %}" rel="stylesheet" />
+<!-- responsive style -->
+<link href="{% static '/css/responsive.css' %}" rel="stylesheet" />
+
+
+<style>
+    body, html {
+      height: 100%;
+    }
+
+    .messages-box {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .messages-list {
+      padding-left: 0;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      list-style: none;
+    }
+
+    .message-text {
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sent {
+      background-color: #dcf8c6;
+      align-self: flex-end;
+    }
+
+    .received {
+      background-color: #f1f0f0;
+      align-self: flex-start;
+    }
+
+    .message-form {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #f8f9fa;
+    }
+
+    .message-input {
+      flex: 1;
+      border-radius: 0;
+      border-right: none;
+    }
+
+    .btn-send {
+      border-radius: 0;
+    }
+
+    .chat-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- header section strats -->
+<header class="header_section long_section px-0">
+  <nav class="navbar navbar-expand-lg custom_nav-container ">
+    <a class="navbar-brand" href="index.html">
+      <span>
+        HomeSpiration
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class=""> </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+        <ul class="navbar-nav  ">
+          <!-- <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}"> About</a>
+          </li> -->
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'add_project' %}"  style="text-transform: none";> Add Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_projects' %}"  style="text-transform: none";>view Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'edit_professional_details' %}"  style="text-transform: none";>Edit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Design' %}"  style="text-transform: none";>Dreamsculpt</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'chatbot' %}" style="text-transform: none";>HomeGenie</a>
+            </li>
+            
+            
+            
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}" style="text-transform: none";>Logout</a>
+          </li>
+        </ul>
+      </div><ul></ul><ul></ul>
+      <div class="quote_btn-container">
+        <!-- <img src="{% if user.professional.profile_photo %}{{ user.professional.profile_photo.url }}{% else %}{% static 'images/user1.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 40px; height: 40px;"> -->
+        <h5>Welcome,{{ user.username }}</h5>
+        <form class="form-inline">
+          <!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+            <i class="fa fa-search" aria-hidden="true"></i> -->
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- end header section -->
+      <ul class="list-unstyled messages-list">
+        {% for chat in chats %}
+          {% if chat.user == request.user %}
+            <li class="message sent">
+          <div class="message-text">
+            <div class="message-sender">
+              <b>You</b>
+            </div>
+            <div class="message-content">
+              {{chat.message}}
+            </div>
+          </div>
+        </li>
+        <li class="message received">
+          <div class="message-text">
+            <div class="message-sender">
+              <b>AI Chatbot</b>
+            </div>
+            <div class="message-content">
+              {{chat.response}}
+            </div>
+          </div>
+        </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+  </div>
+  <!-- Add this in your HTML, outside of your script tags -->
+<div id="chatbot-url" data-url="{% url 'chatbot' %}" hidden></div>
+
+  <form class="message-form" method="post">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" class="form-control message-input" name="message" placeholder="Type your message...">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary btn-send">Send</button>
+        </div>
+    </div>
+    <!-- Add this in your HTML, outside of your script tags -->
+<div id="chatbot-url" data-url="{% url 'chatbot' %}" hidden></div>
+
+</form>
+
+</div>
+
+<script>
+  // Function to get the CSRF token from a cookie
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Get the CSRF token
+  const csrftoken = getCookie('csrftoken');
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get the URL from the data attribute of a hidden div
+    const chatbotUrl = document.getElementById('chatbot-url').getAttribute('data-url');
+    const messageForm = document.querySelector('.message-form');
+    const messageInput = document.querySelector('.message-input');
+    const messagesList = document.querySelector('.messages-list');
+
+    messageForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const message = messageInput.value.trim();
+      if (message) {
+        // Display the user's message first
+        const userMessageItem = document.createElement('li');
+        userMessageItem.classList.add('message', 'sent');
+        userMessageItem.innerHTML = `
+          <div class="message-text">
+            <div class="message-sender">
+              <b>You</b>
+            </div>
+            <div class="message-content">
+              ${message}
+            </div>
+          </div>`;
+        messagesList.appendChild(userMessageItem);
+
+        // Send the message to the backend and get the response
+        fetch(chatbotUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': csrftoken
+          },
+          body: new URLSearchParams({
+            'message': message
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Display the AI chatbot's response
+          const responseItem = document.createElement('li');
+          responseItem.classList.add('message', 'received');
+          responseItem.innerHTML = `
+            <div class="message-text">
+              <div class="message-sender">
+                <b>AI Chatbot</b>
+              </div>
+              <div class="message-content">
+                ${data.response}
+              </div>
+            </div>`;
+          messagesList.appendChild(responseItem);
+          messageInput.value = ''; // Clear the input after sending
+          messagesList.scrollTop = messagesList.scrollHeight; // Scroll to the bottom of the message list
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      }
+    });
+  });
+</script>
+{% endblock %}

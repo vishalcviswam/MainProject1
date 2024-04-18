@@ -1,0 +1,19 @@
+<!-- my_app/templates/my_app/result_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Generation Result</title>
+</head>
+<body>
+    <h1>3D Model Generation Result</h1>
+    {% if result %}
+        <p>3D Model generated successfully!</p>
+        <!-- Display the 3D model or provide a download link -->
+    {% else %}
+        <p>There was an error generating the 3D model.</p>
+    {% endif %}
+    <a href="{% url 'upload_image' %}">Try another image</a>
+</body>
+</html>

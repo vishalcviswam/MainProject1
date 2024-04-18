@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save to Ideabook</title>
+</head>
+<body>
+    <h1>Saving Project to Ideabook...</h1>
+    <!-- You can add a loading spinner or message here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Retrieve data from query parameters
+            var projectId = "{{ project_id }}";
+            var imageUrl = "{{ image_url }}";
+            var projectName = "{{ project_name }}";
+
+            // AJAX request to save project to ideabook
+            $.ajax({
+                type: 'POST',
+                url: '/save_to_ideabook/',
+                data: {
+                    'project_id': projectId,
+                    'image_url': imageUrl,
+                    'project_name': projectName,
+                    // Add more data if needed
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Redirect or display success message
+                    console.log(response);
+                    alert('Project saved to ideabook successfully');
+                    // Redirect to a specific page if needed
+                    window.location.href = '/'; // Redirect to homepage
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error(error);
+                    alert('Error saving project to ideabook: ' + error.responseText);
+                    // Redirect to a specific page if needed
+                    window.location.href = '/'; // Redirect to homepage
+                }
+            });
+        });
+    </script>
+</body>
+</html>

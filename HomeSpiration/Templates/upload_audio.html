@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload or Record Audio</title>
+</head>
+<body>
+    <h2>Upload Audio File</h2>
+    <!-- Updated form with action attribute pointing to 'upload_audio' URL -->
+    <form method="post" action="{% url 'upload_audio' %}" enctype="multipart/form-data" id="upload-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Upload">
+    </form>
+
+    <h2>...or Record Live Audio</h2>
+    <button id="recordButton">Start Recording</button>
+    <p id="recordingStatus"></p>
+    <p id="transcriptionOutput"></p>
+
+    <script>
+        const recordButton = document.getElementById('recordButton');
+        const recordingStatus = document.getElementById('recordingStatus');
+        const transcriptionOutput = document.getElementById('transcriptionOutput');
+        let mediaRecorder;
+        let audioChunks = [];
+
+        recordButton.addEventListener('click', function() {
+            if (!mediaRecorder || mediaRecorder.state === "inactive") {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        mediaRecorder = new MediaRecorder(stream);
+                        audioChunks = [];
+
+                        mediaRecorder.ondataavailable = function(event) {
+                            audioChunks.push(event.data);
+                        };
+
+                        mediaRecorder.onstart = function() {
+                            recordButton.textContent = "Stop Recording";
+                            recordingStatus.textContent = "Recording...";
+                            transcriptionOutput.textContent = "";
+                        };
+
+                        mediaRecorder.onstop = function() {
+                            recordingStatus.textContent = "Processing transcription...";
+                            sendAudioToServer();
+                        };
+
+                        mediaRecorder.start();
+                    })
+                    .catch(function(error) {
+                        console.error('Error accessing the microphone:', error);
+                        recordingStatus.textContent = 'Error accessing the microphone.';
+                    });
+            } else if (mediaRecorder.state === "recording") {
+                mediaRecorder.stop();
+                recordButton.textContent = "Start Recording";
+            }
+        });
+
+        function sendAudioToServer() {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+            const formData = new FormData();
+            formData.append('file', audioBlob, 'recording.mp3');
+
+            fetch('{% url "upload_audio" %}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+            })
+            .then(function(response) {
+                console.log('Response received:', response);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                console.log('Data received:', data);
+                if (data.error) {
+                    transcriptionOutput.textContent = 'Error: ' + data.error;
+                } else if (data.transcription) {
+                    transcriptionOutput.textContent = 'Transcription: ' + data.transcription;
+                } else {
+                    transcriptionOutput.textContent = 'No transcription received.';
+                }
+                recordingStatus.textContent = "";
+            })
+            .catch(function(error) {
+                console.error('Error uploading recording:', error);
+                transcriptionOutput.textContent = 'Error sending audio to the server.';
+            });
+
+            audioChunks = [];
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            console.log('CSRF token from getCookie:', cookieValue);
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>

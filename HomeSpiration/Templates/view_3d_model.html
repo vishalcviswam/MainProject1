@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... -->
+    <title>View 3D Model</title>
+</head>
+<body>
+    <!-- Debug: Output the model file path -->
+    
+
+{% if model_file_path %}
+<p>Model File Path: {{ model_file_path }}</p>
+<!-- Display the 3D model -->
+<model-viewer src="{{ model_file_path }}" alt="3D model" auto-rotate camera-controls></model-viewer>
+{% else %}
+<p>No model to display.</p>
+{% endif %}
+
+    
+    <!-- ... rest of your HTML ... -->
+</body>
+</html>

@@ -1,0 +1,190 @@
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+Internal Server Error: /send_email/
+Traceback (most recent call last):
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\views.py", line 802, in send_email
+    send_email_with_image(subject, message, from_email, recipient_list, image_url)
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\utilities.py", line 14, in send_email_with_image
+    email.send()
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\message.py", line 300, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 86, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 836, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+"POST /send_email/ HTTP/1.1" 500 116955
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+Internal Server Error: /send_email/
+Traceback (most recent call last):
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\views.py", line 802, in send_email
+    send_email_with_image(subject, message, from_email, recipient_list, image_url)
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\utilities.py", line 14, in send_email_with_image
+    email.send()
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\message.py", line 300, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor h11-20020a63210b000000b005e2b0671987sm3792430pgh.51 - gsmtp')
+"POST /send_email/ HTTP/1.1" 500 109381
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+Internal Server Error: /send_email/
+Traceback (most recent call last):
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\views.py", line 802, in send_email
+    send_email_with_image(subject, message, from_email, recipient_list, image_url)
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\utilities.py", line 14, in send_email_with_image
+    email.send()
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\message.py", line 300, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 128, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\mail\backends\smtp.py", line 95, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 750, in login
+    raise last_exception
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "C:\Users\uthra\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor o12-20020a170902bccc00b001dc486f0cbesm4366982pls.222 - gsmtp')
+"POST /send_email/ HTTP/1.1" 500 109388
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+Internal Server Error: /send_email/
+Traceback (most recent call last):
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\views.py", line 763, in send_email
+    image_content = requests.get(image_url).content
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL '/media/projects/buildings/6_o9kAVjg.jpg': No scheme supplied. Perhaps you meant https:///media/projects/buildings/6_o9kAVjg.jpg?
+"POST /send_email/ HTTP/1.1" 500 100872
+Internal Server Error: /send_email/
+Traceback (most recent call last):
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\HomeSpiration\my_app\views.py", line 763, in send_email
+    image_content = requests.get(image_url).content
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "D:\PROJECT FINALS\MP\MY PROJECT\my_env\Lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL '/media/projects/buildings/6_o9kAVjg.jpg': No scheme supplied. Perhaps you meant https:///media/projects/buildings/6_o9kAVjg.jpg?
+"POST /send_email/ HTTP/1.1" 500 100872
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
+"GET /static/https%3A/maps.googleapis.com/maps/api/js%3Fkey%3DAIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI%26callback%3DmyMap HTTP/1.1" 500 59
+"GET /static/https%3A/fonts.googleapis.com/css%3Ffamily%3DPoppins%3A400%2C600%2C700%26display%3Dswap HTTP/1.1" 500 59
